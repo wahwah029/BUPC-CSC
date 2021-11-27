@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 27, 2021 at 09:11 AM
+-- Host: localhost
+-- Generation Time: Nov 27, 2021 at 09:58 AM
 -- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.8
+-- PHP Version: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -70,16 +70,6 @@ CREATE TABLE `files` (
   `uploadDate` varchar(255) CHARACTER SET latin1 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `files`
---
-
-INSERT INTO `files` (`id`, `report`, `sem`, `sYear`, `uploadDate`) VALUES
-(1, 'Midterm-exam-for-GEC-19-Rizal-Course[1].docx', '', '', ''),
-(2, 'Midterm-exam-for-GEC-19-Rizal-Course[1].docx', 'gr', 'rg', 'Sat Nov 27, 2021'),
-(3, '-Template- FINAL REQUIREMENT.pdf', '', '', ''),
-(4, '-Template- FINAL REQUIREMENT.pdf', 'dw', 'wd', 'Sat Nov 27, 2021');
-
 -- --------------------------------------------------------
 
 --
@@ -93,14 +83,6 @@ CREATE TABLE `financialreport` (
   `sYear` varchar(255) NOT NULL,
   `uploadDate` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `financialreport`
---
-
-INSERT INTO `financialreport` (`id`, `report`, `sem`, `sYear`, `uploadDate`) VALUES
-(1, 'activitiiiiiiiiiiiies.docx', '', '', ''),
-(2, 'activitiiiiiiiiiiiies.docx', 'dw', 'wd', 'Sat Nov 27, 2021');
 
 -- --------------------------------------------------------
 
@@ -175,14 +157,6 @@ CREATE TABLE `otherreports` (
   `sYear` varchar(255) NOT NULL,
   `uploadDate` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `otherreports`
---
-
-INSERT INTO `otherreports` (`id`, `report`, `sem`, `sYear`, `uploadDate`) VALUES
-(1, 'CHAPTER 1_IS308A_DinoRempilloTolarba.docx', '', '', ''),
-(2, 'CHAPTER 1_IS308A_DinoRempilloTolarba.docx', 'dw', 'wd', 'Sat Nov 27, 2021');
 
 -- --------------------------------------------------------
 
@@ -300,13 +274,13 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `financialreport`
 --
 ALTER TABLE `financialreport`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `logs`
@@ -324,7 +298,7 @@ ALTER TABLE `officers`
 -- AUTO_INCREMENT for table `otherreports`
 --
 ALTER TABLE `otherreports`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `studentsacc`
