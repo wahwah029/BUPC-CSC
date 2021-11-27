@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Nov 22, 2021 at 03:07 AM
+-- Host: 127.0.0.1
+-- Generation Time: Nov 27, 2021 at 09:11 AM
 -- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.9
+-- PHP Version: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -64,27 +64,29 @@ INSERT INTO `events` (`id`, `eName`, `eDescription`, `eLocation`, `startdate`, `
 
 CREATE TABLE `files` (
   `id` int(11) NOT NULL,
-  `sYear` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `report` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `sem` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `uploadDate` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `report` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `sem` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `sYear` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `uploadDate` varchar(255) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `files`
 --
 
-INSERT INTO `files` (`id`, `sYear`, `report`, `sem`, `uploadDate`) VALUES
-(2, '2018-2019', 'BUPC-CSC AR 2018-2019.pdf', 'All semester', 'Sat Oct 30, 2021'),
-(3, '2019-2020', 'BUPC-CSC AR 2019-2020.pdf', 'All semester', 'Sat Oct 30, 2021');
+INSERT INTO `files` (`id`, `report`, `sem`, `sYear`, `uploadDate`) VALUES
+(1, 'Midterm-exam-for-GEC-19-Rizal-Course[1].docx', '', '', ''),
+(2, 'Midterm-exam-for-GEC-19-Rizal-Course[1].docx', 'gr', 'rg', 'Sat Nov 27, 2021'),
+(3, '-Template- FINAL REQUIREMENT.pdf', '', '', ''),
+(4, '-Template- FINAL REQUIREMENT.pdf', 'dw', 'wd', 'Sat Nov 27, 2021');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `financialReport`
+-- Table structure for table `financialreport`
 --
 
-CREATE TABLE `financialReport` (
+CREATE TABLE `financialreport` (
   `id` int(11) NOT NULL,
   `report` varchar(255) NOT NULL,
   `sem` varchar(255) NOT NULL,
@@ -93,11 +95,12 @@ CREATE TABLE `financialReport` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `financialReport`
+-- Dumping data for table `financialreport`
 --
 
-INSERT INTO `financialReport` (`id`, `report`, `sem`, `sYear`, `uploadDate`) VALUES
-(2, '', 'sadasd', 'asdasd', 'Wed Nov 17, 2021');
+INSERT INTO `financialreport` (`id`, `report`, `sem`, `sYear`, `uploadDate`) VALUES
+(1, 'activitiiiiiiiiiiiies.docx', '', '', ''),
+(2, 'activitiiiiiiiiiiiies.docx', 'dw', 'wd', 'Sat Nov 27, 2021');
 
 -- --------------------------------------------------------
 
@@ -113,17 +116,6 @@ CREATE TABLE `logs` (
   `logout` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `logs`
---
-
-INSERT INTO `logs` (`id`, `username`, `date`, `login`, `logout`) VALUES
-(1, 'Adviser', 'Wed Nov 17, 2021', '04:38: PM', '04:52 PM'),
-(2, 'Adviser', 'Wed Nov 17, 2021', '05:25: PM', NULL),
-(3, 'Adviser', 'Thu Nov 18, 2021', '02:09: PM', NULL),
-(4, 'Adviser', 'Sat Nov 20, 2021', '10:37: PM', NULL),
-(5, 'Adviser', 'Mon Nov 22, 2021', '09:27: AM', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -138,51 +130,59 @@ CREATE TABLE `officers` (
   `yearLevel` varchar(255) DEFAULT NULL,
   `buEmail` varchar(255) DEFAULT NULL,
   `fb` varchar(255) DEFAULT NULL,
-  `picture` varchar(255) DEFAULT NULL,
   `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `picture` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `officers`
 --
 
-INSERT INTO `officers` (`id`, `name`, `position`, `course`, `yearLevel`, `buEmail`, `fb`, `picture`, `username`, `password`) VALUES
-(11, 'Mary Joy B. Catangui', 'Dean', '', '', 'ddfs', 'fdsf', '', 'sdfds', 'fsdf'),
-(12, 'Maria Mercedes Remon', 'Associate Dean', '', '', 'fdsf', 'dsfds', '', 'fsdf', 'dsfdsf'),
-(13, 'Bel L. Saminiano', 'Adviser', '', '', 'dsfsd', 'fsdfsdf', '', 'sdfsdf', 'fsdf'),
-(14, 'Joshua Boban', 'President', 'BSEd Math', '4th Year', 'sdfds', 'fsf', '', 'dsf', 'dsf'),
-(15, 'Maria Roseanne Pandaan', 'Vice President', 'BSEd English', '4th Year', 'dsadas', 'dsad', '', 'sadsa', 'dasd'),
-(16, 'Edessa Joy Legson', 'Secretary', 'BS Computer Engineering', '3rd Year', 'sadas', 'dfsf', '', 'dsfsd', 'fsdf'),
-(17, 'Bernadette Riofro Satuito', 'Treasurer', 'BTLEd Information Communication Technology', '1st Year', 'dsad', 'asdas', '', 'dsad', 'asdasd'),
-(18, 'JOsephine Marie Almuenia', 'Auditor', 'BS Computer Engineering', '1st Year', 'dsadsa', 'dasd', '', 'dsad', 'sadasd'),
-(19, 'John Boy Arellano Pante', 'Business Manager', 'BS Information System', '4th Year', 'dsad', 'sa', '', 'das', 'dsad'),
-(20, 'Hannah Paula', 'P.I.O', 'BS Computer Engineering', '3rd Year', 'dfafda', 'fsdf', '', 'fdsf', 'sdff'),
-(21, 'Tricia KAye Moya', 'Representative', 'BTLEd Home Economics', '2nd Year', 'dsf', 'sdfsd', '', 'fsdf', 'sdfsf'),
-(22, 'Stephanie Tolosa', 'Representative', 'BS Computer Engineering', '3rd Year', 'dsfsdf', 'dsfsdf', '', 'fdsfsd', 'fsdfsf'),
-(23, 'Ramius Aquiler', 'Representative', 'BS Computer Engineering', '1st Year', 'fdsf', 'dsfsdf', '', 'fdsf', 'dsfsdf'),
-(24, 'Vince Pagdagdagan', 'Representative', 'BTLEd Home Economics', '2nd Year', 'dsadas', 'dasd', '', 'dasd', 'dasdas'),
-(25, 'Jodelyn Mendoza', 'Representative', 'BS Computer Engineering', '2nd Year', 'dsadsa', 'dasd', '', 'dsadasd', 'sadasd'),
-(26, 'Riena MArie Nimo', 'Representative', 'BS Computer Engineering', '2nd Year', 'dsadas', 'dsad', '', 'dsad', 'sadasd'),
-(27, 'Stephanie Allorde', 'Representative', 'BS Computer Science', '1st Year', 'fdfsd', 'fsdf', '', 'dsf', 'sdfsdfs'),
-(28, 'Dave Sulit', 'Representative', 'BS Electrical Technology', '2nd Year', 'sadsa', 'dasd', '', 'dasd', 'asdasda'),
-(29, 'Ralph Jessie Oco', 'Representative', 'BS Computer Engineering', '2nd Year', 'dsadsad', 'sad', '', 'dasdasd', 'asdasdasddsa'),
-(30, 'Cyrill JUnne Regilme', 'Representative', 'BTLEd Home Economics', '1st Year', 'sadsa', 'dasd', '', 'dsad', 'asdas'),
-(31, 'Chinchin O. Lim', 'Representative', 'BS Automotive Technology', '1st Year', 'sadasd', 'asd', '', 'asd', 'sadasdas');
+INSERT INTO `officers` (`id`, `name`, `position`, `course`, `yearLevel`, `buEmail`, `fb`, `username`, `password`, `picture`) VALUES
+(11, 'Mary Joy B. Catangui', 'Dean', '', '', 'ddfs', 'fdsf', 'sdfds', 'fsdf', '257596549_264192399019321_6842497807326075703_n.jpg'),
+(12, 'Maria Mercedes Remon', 'Associate Dean', '', '', 'fdsf', 'dsfds', 'assocdean', 'assocdean', '259701655_426651622431754_9023457753223381157_n.jpg'),
+(13, 'Bel L. Saminiano', 'Adviser', '', '', 'dsfsd', 'fsdfsdf', 'adviser', 'adviser', 'Sir Ben Saminiano.jpg'),
+(14, 'Joshua Bubam', 'President', 'BSEd Math', '4th Year', 'sdfds', 'fsf', 'buban', 'buban', 'President.jpg'),
+(15, '', 'Vice President', 'BSEd English', '4th Year', 'dsadas', 'dsad', 'sadsa', 'dasd', ''),
+(16, 'Edessa Joy Legson', 'Secretary', 'BS Information System', '4th Year', 'sadas', 'dfsf', 'dsfsd', 'fsdf', 'Sec.jpg'),
+(17, 'Bernadette Riofro Satuito', 'Treasurer', 'BTLEd Information Communication Technology', '1st Year', 'dsad', 'asdas', 'dsad', 'asdasd', 'Trea.jpg'),
+(18, 'JOsephine Marie Almuenia', 'Auditor', 'BS Computer Engineering', '1st Year', 'dsadsa', 'dasd', 'dsad', 'sadasd', NULL),
+(19, 'John Boy Arellano Pante', 'Business Manager', 'BS Information System', '4th Year', 'dsad', 'sa', 'das', 'dsad', NULL),
+(20, 'Hannah Paula', 'P.I.O', 'BS Computer Engineering', '3rd Year', 'dfafda', 'fsdf', 'fdsf', 'sdff', NULL),
+(21, 'Tricia KAye Moya', 'Representative', 'BTLEd Home Economics', '2nd Year', 'dsf', 'sdfsd', 'fsdf', 'sdfsf', NULL),
+(22, 'Stephanie Tolosa', 'Representative', 'BS Computer Engineering', '3rd Year', 'dsfsdf', 'dsfsdf', 'fdsfsd', 'fsdfsf', NULL),
+(23, 'Ramius Aquiler', 'Representative', 'BS Computer Engineering', '1st Year', 'fdsf', 'dsfsdf', 'fdsf', 'dsfsdf', NULL),
+(24, 'Vince Pagdagdagan', 'Representative', 'BTLEd Home Economics', '2nd Year', 'dsadas', 'dasd', 'dasd', 'dasdas', NULL),
+(25, 'Jodelyn Mendoza', 'Representative', 'BS Computer Engineering', '2nd Year', 'dsadsa', 'dasd', 'dsadasd', 'sadasd', NULL),
+(26, 'Riena MArie Nimo', 'Representative', 'BS Computer Engineering', '2nd Year', 'dsadas', 'dsad', 'dsad', 'sadasd', NULL),
+(27, 'Stephanie Allorde', 'Representative', 'BS Computer Science', '1st Year', 'fdfsd', 'fsdf', 'dsf', 'sdfsdfs', NULL),
+(28, 'Dave Sulit', 'Representative', 'BS Electrical Technology', '2nd Year', 'sadsa', 'dasd', 'dasd', 'asdasda', NULL),
+(29, 'Ralph Jessie Oco', 'Representative', 'BS Computer Engineering', '2nd Year', 'dsadsad', 'sad', 'dasdasd', 'asdasdasddsa', NULL),
+(30, 'Cyrill JUnne Regilme', 'Representative', 'BTLEd Home Economics', '1st Year', 'sadsa', 'dasd', 'dsad', 'asdas', NULL),
+(31, 'Chinchin O. Lim', 'Representative', 'BS Automotive Technology', '1st Year', 'sadasd', 'asd', 'asd', 'sadasdas', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `otherReports`
+-- Table structure for table `otherreports`
 --
 
-CREATE TABLE `otherReports` (
+CREATE TABLE `otherreports` (
   `id` int(11) NOT NULL,
   `report` varchar(255) NOT NULL,
   `sem` varchar(255) NOT NULL,
   `sYear` varchar(255) NOT NULL,
   `uploadDate` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `otherreports`
+--
+
+INSERT INTO `otherreports` (`id`, `report`, `sem`, `sYear`, `uploadDate`) VALUES
+(1, 'CHAPTER 1_IS308A_DinoRempilloTolarba.docx', '', '', ''),
+(2, 'CHAPTER 1_IS308A_DinoRempilloTolarba.docx', 'dw', 'wd', 'Sat Nov 27, 2021');
 
 -- --------------------------------------------------------
 
@@ -230,7 +230,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `picture`, `role`, `status`) VALUES
-(36, 'Ben Saminiano', 'Adviser', 'adviser', 'Sir Ben Saminiano.jpg', 'Adviser', 'Online');
+(36, 'Ben Saminiano', 'Adviser', 'adviser', '1637723301-Sir Ben Saminiano.jpg', 'Adviser', 'Offline'),
+(42, 'Mary Joy B. Catangui', 'Dean', 'dean', '257596549_264192399019321_6842497807326075703_n.jpg', 'Dean', 'Online'),
+(44, 'Maria Mercedes Remon', 'Assoc', 'assoc', '259701655_426651622431754_9023457753223381157_n.jpg', 'President', NULL);
 
 --
 -- Indexes for dumped tables
@@ -249,9 +251,9 @@ ALTER TABLE `files`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `financialReport`
+-- Indexes for table `financialreport`
 --
-ALTER TABLE `financialReport`
+ALTER TABLE `financialreport`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -267,9 +269,9 @@ ALTER TABLE `officers`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `otherReports`
+-- Indexes for table `otherreports`
 --
-ALTER TABLE `otherReports`
+ALTER TABLE `otherreports`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -292,7 +294,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `files`
@@ -301,28 +303,28 @@ ALTER TABLE `files`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `financialReport`
+-- AUTO_INCREMENT for table `financialreport`
 --
-ALTER TABLE `financialReport`
+ALTER TABLE `financialreport`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `officers`
 --
 ALTER TABLE `officers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
--- AUTO_INCREMENT for table `otherReports`
+-- AUTO_INCREMENT for table `otherreports`
 --
-ALTER TABLE `otherReports`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `otherreports`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `studentsacc`
@@ -334,7 +336,7 @@ ALTER TABLE `studentsacc`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
